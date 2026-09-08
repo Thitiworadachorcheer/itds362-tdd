@@ -20,7 +20,9 @@ class Quantity:
 
 class Converter:
     def reduce(self, source, to_unit):
-        # Fake-it for now: return the source unchanged (will update later)
+        # If the source knows how to reduce itself, delegate to it.
+        if hasattr(source, "reduce"):
+            return source.reduce(to_unit)
         return source
 
 
@@ -28,4 +30,9 @@ class Sum:
     def __init__(self, left, right):
         self.left = left
         self.right = right
+    
+    def reduce(self, unit):
+        left = self.left.reduce(unit) if hasattr(self.left, "reduce") else self.left
+        right = self.right.reduce(unit) if hasattr(self.right, "reduce") else self.right
+        return Quantity(left.amount + right.amount, unit)
 

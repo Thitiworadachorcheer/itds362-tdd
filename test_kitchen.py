@@ -7,7 +7,7 @@
 # (200 g + 1 oz) × 2
 
 # test_kitchen.py
-from kitchen import Quantity
+from kitchen import Quantity, Converter
  
  
 def test_multiplication():
