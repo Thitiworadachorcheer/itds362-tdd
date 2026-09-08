@@ -41,6 +41,13 @@ def test_equality():
 
 def test_grams_are_not_ounces():
     assert Quantity(1, "g") != Quantity(1, "oz")
+    
+def grams(amount):
+    return Quantity(amount, "g")
+ 
+def ounces(amount):
+    return Quantity(amount, "oz")
+
 
     
 
