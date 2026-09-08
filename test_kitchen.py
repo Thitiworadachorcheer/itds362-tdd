@@ -34,6 +34,11 @@ def test_multiplication_returns_a_new_quantity():
     assert result.amount == 600
     assert flour.amount == 200
     assert result is not flour
+    
+def test_equality():
+    assert Quantity(200) == Quantity(200)
+    assert Quantity(200) != Quantity(300)
+
 
 
 
